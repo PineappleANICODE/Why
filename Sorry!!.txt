@@ -1,0 +1,45 @@
+This file is coming soon. I'm having file size issues and virus-detection problems at the minute. If you have pygame installed and would like to run it yourself, the code is below. [The arg is not finished yet! You may not be able to use the info from this code for anything yet]
+
+
+import pygame
+import time
+BLACK= (0,0,0)
+screen= pygame.display.set_mode((500,100))
+pygame.display.set_caption("Embrace what you've done?")
+exit= True
+e=False
+y=False
+
+def write(t, x, y, screen, color="Coral") -> pygame.Surface:
+        font = pygame.font.SysFont("Arial", 24)
+        text = font.render(t, 1, pygame.Color(color))
+
+        screen.blit(text, (x, y))
+        pygame.display.update()
+        return text
+
+screen = pygame.display.set_mode((500,500))
+
+run=True
+while run:
+        write("hello!",100,100,screen)
+while exit==True:
+    screen.fill(BLACK)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit = False
+            e=True
+    keys=pygame.key.get_pressed()
+    if keys[pygame.K_y]:
+        exit= False
+        y=True
+    if keys[pygame.K_n]:
+        write("You will never succeed",0,0,screen)
+        time.sleep(2)
+        pygame.quit()
+        exit = False
+if y==True:
+    write("Well done. Acceptance is the first key.",0,0,screen)
+    time.sleep(5)
+if e==True:
+    pygame.quit()
